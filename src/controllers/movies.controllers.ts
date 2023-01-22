@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
-import connectionDB from "../database/database.js";
-import { postFilmes } from "../repositories/filmesRepository.js";
+import { ResultQueryMeta } from "postgres";
+import { postFilmes, getFilmes, updateDescription } from "../repositories/filmesRepository.js";
 
 
 type Filme = {
@@ -28,4 +28,37 @@ export async function postFilme(req: Request, res: Response) {
     }
 }
 
+export async function getFilmeById(req:Request,res:Response) {
 
+    const {id} = (req.params);
+  
+    const numberId = parseInt(id);
+  
+     try{
+        const {rows} = await getFilmes(numberId);
+        res.send(rows);
+     }catch (err) {
+        res.status(500).send(err.message);
+     }
+}
+
+
+type Update = {
+
+    descricao: string,
+    filmeId: number
+}
+
+
+export async function updateFilmDescription (req:Request, res:Response) {
+
+const updateFilme = req.body as Update;
+
+    try{
+        await updateDescription(updateFilme.descricao, updateFilme.filmeId)
+
+        res.status(200).send("Descrição atualizada com sucesso!!!")
+    }catch (err){
+        res.status(500).send(err.message)
+    }
+}

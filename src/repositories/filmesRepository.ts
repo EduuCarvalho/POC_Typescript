@@ -8,4 +8,15 @@ export async function postFilmes(nome: string, descricao: string, status : boole
 
 }
 
+export async function getFilmes(filmeId: Number){
+    return connectionDB.query(
+        `SELECT * from filmes WHERE filmes.id=$1;`,[filmeId]
+    );
+}
 
+
+export async function updateDescription (newDescription:String,filmeId: Number) {
+    return connectionDB.query(
+        `UPDATE filmes SET descricao=$1 WHERE filmes.id=$2;`,[newDescription,filmeId]
+    )
+}
