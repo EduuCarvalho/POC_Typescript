@@ -20,3 +20,10 @@ export async function updateDescription (newDescription:String,filmeId: Number) 
         `UPDATE filmes SET descricao=$1 WHERE filmes.id=$2;`,[newDescription,filmeId]
     )
 }
+
+export async function deleteFilme(deleteId:Number){
+
+    return connectionDB.query(
+        `DELETE FROM filmes WHERE id=$1;`,[deleteId]
+    )
+}

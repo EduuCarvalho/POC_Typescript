@@ -7,3 +7,12 @@ export const filmesPostModel = joi.object({
     "plataformaId": joi.number().required(),
     "generoId": joi.number().required()
 })
+
+export const updateFilmeModel = joi.object({
+    "descricao": joi.string().required(),
+    "filmeId": joi.number().required()
+})
+
+export const deleteFilmeModel = joi.object({
+    "filmeId": joi.number().required()
+})
