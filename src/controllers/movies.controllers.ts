@@ -12,7 +12,6 @@ type Filme = {
 }
 
 export async function getHealth(req: Request, res: Response) {
-
     res.send("OK")
 };
 
