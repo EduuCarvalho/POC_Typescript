@@ -1,32 +1,35 @@
-import { Request,Response } from "express"
+import { Request, Response } from "express"
 import connectionDB from "../database/database.js";
+import { postFilmes } from "../repositories/filmesRepository.js";
+
 
 type Filme = {
     nome: string,
     descricao: string,
     status: boolean,
-    plat: string,
-    gen: string
+    plataformaId: number,
+    generoId: number
 }
 
-export async function getHealth (req: Request, res: Response){
-    
-    res.send("OK")
+export async function getHealth(req: Request, res: Response) {
 
+    res.send("OK")
 };
 
-export async function postFilme (req: Request, res: Response){
+export async function postFilme(req: Request, res: Response) {
     const filme = req.body as Filme;
-    console.log("PASSEI POR AQUI MAS N ENTREI NO BANCO")
 
-    try{
-        await connectionDB.query(
-            `INSERT INTO filme JOIN genero JOIN plataforma VALUES(nome,descricao,status,plat,gen) VALUES ($1,$2,$3,$4,$5);`,[filme.nome,filme.descricao,filme.status,filme.plat,filme.gen]
-        ) 
+    try {
+        await postFilmes(filme.nome, filme.descricao, filme.status, filme.plataformaId, filme.generoId)
+
         res.status(200).send("Post feito com sucesso!")
-    }catch (err){
+    } catch (err) {
         console.log(err)
-        res.sendStatus(501)
+        res.sendStatus(500)
     }
 }
 
+
+/* await connectionDB.query(
+    `INSERT INTO filmes (nome,descricao,status,"plataformaId", "generoId") VALUES ($1,$2,$3,$4,$5);`,[filme.nome,filme.descricao,filme.status,filme.plataformaId,filme.generoId]
+    ) */

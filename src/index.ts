@@ -14,18 +14,18 @@ console.log(`Server is up and running!!!`)
 // BANCO
 // FILMES
 //"id" SERIAL PRIMARY KEY,
-// "nome" TEXT UNIQUE NOT NULL,
-//"descricao" VARCHAR(350),
+// "nome" VARCHAR(30) UNIQUE NOT NULL,
+//"descricao" VARCHAR(500),
 //"status" BOOLEAN NOT NULL DEFAULT FALSE,
 //"plataformaId" INTEGER NOT NULL REFERENCES "plataforma"("id"),
-//"generoId" INTERNET NOT NULL REFERENCES "genero"("id")
+//"generoId" INTEGER NOT NULL REFERENCES "genero"("id")
 
 
 // plataforma
 //"id" SERIAL PRIMARY KEY,
-//"plat" TEXT UNIQUE NOT NULL
+//"nome" VARCHAR(30) UNIQUE NOT NULL
 
 
 // genero
 //"id" SERIAL PRIMARY KEY,
-//"gen" TEXT UNIQUE NOT NULL,
+//"nome" VARCHAR(30) NOT NULL,
