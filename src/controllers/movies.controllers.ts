@@ -29,6 +29,3 @@ export async function postFilme(req: Request, res: Response) {
 }
 
 
-/* await connectionDB.query(
-    `INSERT INTO filmes (nome,descricao,status,"plataformaId", "generoId") VALUES ($1,$2,$3,$4,$5);`,[filme.nome,filme.descricao,filme.status,filme.plataformaId,filme.generoId]
-    ) */
