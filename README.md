@@ -22,7 +22,7 @@ npm i
 
 
 ```bash
-connectionString:`postgresql://NOME_DO_POSTGRES:SUA_SENHA@localhost:5432/NOME_DO_BANCO?schema=public`
+connectionString:`postgresql://USER_POSTGRES:PASSWORD_POSTGRES@localhost:5432/DATABASE_NAME?schema=public`
 ```
 
 ## How to use the application
